@@ -1,4 +1,6 @@
 <?php
+//see fail on õppejõul functions.php nimega
+
 //functions.php
 require_once("../../configglobal.php");
 $database = "if15_kaurkal";
@@ -27,17 +29,21 @@ function getCarData(){
 	while($stmt->fetch()){
 		//loon objekti iga while tsykli kord
 		$car = new StdClass();
-		$car->id = $id;
-		$car->number_plate = $number_plate;
-			
-		array_push($array, $car);
+		$car->id1 = $id;
+		$car->user_id1 = $user_id;
+		$car->number_plate1 = $number_plate;
+		$car->color1 = $color_from_Databeiss;
+
 		
-		echo "<pre>";
-		var_dump($array);
-		echo "</pre>";
+		array_push($array, $car);
+		//echo "<pre>";
+		//var_dump($array);
+		//echo "</pre>";
 		// var_dump annab infi, mis string/int jne on, echo "<pre>" jätab vormingu alles	
-$stmt->close();
-$mysqli->close();
+	}
+	$stmt->close();
+	$mysqli->close();
+	return $array;
 }
 
 
